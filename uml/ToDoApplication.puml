@@ -69,7 +69,7 @@ class ButtonHandler
 {
     public void Save(List<String> list)
     public List<String> Load(File file)
-    public Item AddItemButton(ListView<String> todoItemView, TextField listTextField)
+    public Item AddItemButton(ListView<String> todoItemView, String name)
     public void RenameItem(String currentName, int index, List<Item> items)
 }
 

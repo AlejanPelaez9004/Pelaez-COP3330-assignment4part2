@@ -5,7 +5,6 @@
 package ucf.assignments;
 
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -76,9 +75,8 @@ public class ButtonHandler implements FileInterface {
         return loadedList;
     }
 
-    public static Item AddItemButton(ListView<String> todoItemView, TextField listTextField)
+    public static Item AddItemButton(ListView<String> todoItemView, String name)
     {
-        String name = listTextField.getCharacters().toString();
         todoItemView.getItems().add(name);
         return new Item(name);
     }

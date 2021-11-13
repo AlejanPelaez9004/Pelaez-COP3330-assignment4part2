@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="231096af-9f36-42cc-8446-2f560170c1ae" name="Changes" comment="Added readme.md">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoApplication.java" afterDir="false" />
+    <list default="true" id="231096af-9f36-42cc-8446-2f560170c1ae" name="Changes" comment="Added correct puml diagram">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ButtonHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ButtonHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/FileInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/FileInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ItemViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ItemViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ucf/assignments/ButtonHandlerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ucf/assignments/DisplayCompleteManagerTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/uml/ToDoApplication.puml" beforeDir="false" afterPath="$PROJECT_DIR$/uml/ToDoApplication.puml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +109,70 @@
       <recent name="ucf.assignments" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.ButtonHandlerTest.Load">
+    <configuration name="ButtonHandlerTest.Load" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;ucf.assignments.ButtonHandlerTest.Load&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ButtonHandlerTest.addItemButton" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;ucf.assignments.ButtonHandlerTest.addItemButton&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ButtonHandlerTest.save" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;ucf.assignments.ButtonHandlerTest.save&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="assignment4 [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -137,6 +205,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ButtonHandlerTest.Load" />
+        <item itemvalue="Gradle.ButtonHandlerTest.save" />
+        <item itemvalue="Gradle.ButtonHandlerTest.addItemButton" />
         <item itemvalue="Gradle.assignment4 [run]" />
       </list>
     </recent_temporary>
@@ -199,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636843279512</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added correct puml diagram">
+      <created>1636843886179</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1636843886179</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -223,6 +301,7 @@
     <MESSAGE value="Added JUnit tests" />
     <MESSAGE value="Finished implementation" />
     <MESSAGE value="Added readme.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added readme.md" />
+    <MESSAGE value="Added correct puml diagram" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added correct puml diagram" />
   </component>
 </project>

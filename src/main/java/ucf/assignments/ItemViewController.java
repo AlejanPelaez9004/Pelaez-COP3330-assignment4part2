@@ -61,7 +61,7 @@ public class ItemViewController {
 
     @FXML
     void onAddButtonPressed(ActionEvent event) {
-        items.add(ButtonHandler.AddItemButton(todoItemView, itemTextField));
+        items.add(ButtonHandler.AddItemButton(todoItemView, itemTextField.getCharacters().toString()));
     }
 
     @FXML
