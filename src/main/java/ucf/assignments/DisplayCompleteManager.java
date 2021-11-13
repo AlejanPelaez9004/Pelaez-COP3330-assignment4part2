@@ -6,32 +6,60 @@ package ucf.assignments;
 
 import javafx.scene.control.ListView;
 
-public class DisplayCompleteManager {
+import java.util.ArrayList;
+import java.util.List;
 
-    public void ShowCompletedItems()
+public class DisplayCompleteManager {
+    private static List<Item> completed = new ArrayList<>();
+    private static List<Item> incomplete = new ArrayList<>();
+
+    public static void ShowCompletedItems(List<Item> masterList, ListView<String> listView)
     {
         // Loop through all items
         // Use HideAll() to hide them
         // Show the completed items using complete boolean
+        HideAll(masterList, listView);
+
+        for (Item item : completed)
+            listView.getItems().add(item.getName());
     }
 
-    public void ShowIncompleteItems()
+    public static void ShowIncompleteItems(List<Item> masterList, ListView<String> listView)
     {
         // Loop through all items
         // Use HideAll() to hide them
         // Show the incomplete items using complete boolean
+        HideAll(masterList, listView);
+
+        for (Item item : incomplete)
+            listView.getItems().add(item.getName());
     }
 
-    public void ShowAllItems()
+    public static void ShowAllItems(List<Item> masterList, ListView<String> listView)
     {
         // Loop through all items
         // Enable all items
+        HideAll(masterList, listView);
+
+        for (Item item : completed)
+            listView.getItems().add(item.getName());
+        for (Item item : incomplete)
+            listView.getItems().add(item.getName());
     }
 
-    private void HideAll(ListView<String> listView)
+    private static void HideAll(List<Item> masterList, ListView<String> listView)
     {
-        //var allItems = listView.getSelectionModel.getAll();
-        //for (i = 0; i < allItems.size(); i++)
-        //  allItems.remove(i);
+        // Update the lists and clear the listView
+        completed.clear();
+        incomplete.clear();
+
+        for (Item item : masterList) {
+            if (item.getCompleteStatus())
+                completed.add(item);
+            else
+                incomplete.add(item);
+        }
+
+        listView.getItems().clear();
     }
 }

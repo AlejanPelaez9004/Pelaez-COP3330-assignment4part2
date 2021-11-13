@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="231096af-9f36-42cc-8446-2f560170c1ae" name="Changes" comment="Added JUnit tests">
+    <list default="true" id="231096af-9f36-42cc-8446-2f560170c1ae" name="Changes" comment="Finished implementation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ButtonHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ButtonHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/DisplayCompleteManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/DisplayCompleteManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/FileInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/FileInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ItemViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ItemViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ListViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ucf/assignments/ToDoList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ItemView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ItemView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ucf/assignments/ListView.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +102,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/ucf/assignments" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
@@ -121,6 +132,17 @@
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <recent_temporary>
       <list>
@@ -194,6 +216,7 @@
     <MESSAGE value="Proper naming, some pseudocode done" />
     <MESSAGE value="Pseudocode finished, UML finished" />
     <MESSAGE value="Added JUnit tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added JUnit tests" />
+    <MESSAGE value="Finished implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished implementation" />
   </component>
 </project>

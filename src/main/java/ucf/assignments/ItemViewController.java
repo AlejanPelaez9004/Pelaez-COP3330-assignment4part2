@@ -5,9 +5,22 @@
 package ucf.assignments;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.util.StringConverter;
+
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class ItemViewController {
 
@@ -23,6 +36,8 @@ public class ItemViewController {
     private DatePicker datePicker;
     @FXML
     private MenuButton fileButton;
+    @FXML
+    private MenuItem removeAll;
     @FXML
     private MenuItem deleteSelected;
     @FXML
@@ -42,81 +57,162 @@ public class ItemViewController {
     @FXML
     private ListView<String> todoItemView;
 
+    private List<Item> items = new ArrayList<>();
+
     @FXML
     void onAddButtonPressed(ActionEvent event) {
-        //items.add(ButtonHandler.AddItemButton(todoItemView, itemTextField));
+        items.add(ButtonHandler.AddItemButton(todoItemView, itemTextField));
     }
 
     @FXML
-    void onItemListClicked(MouseEvent event) {
-        /*todoItemView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                        if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2)
+    void onItemListClicked() {
+        todoItemView.setOnMouseClicked(new EventHandler<>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getButton() == MouseButton.PRIMARY)
+                {
+                    boolean hasItems = items.size() > 0;
+                    if (hasItems)
+                    {
+                        if (todoItemView.getSelectionModel().getSelectedIndex() != -1)
                         {
-                                String selectedItem = todoItemView.getSelectionModel().getSelectedItem();
-                                System.out.println(selectedItem);
+                            // Get the selected item
+                            Item selectedItem = items.get(todoItemView.getSelectionModel().getSelectedIndex());
+                            if (!Objects.equals(selectedItem.getName(), todoItemView.getSelectionModel().getSelectedItem()))
+                                selectedItem = Item.GetItemByString(items, todoItemView.getSelectionModel().getSelectedItem());
 
-                                Item selectedItem = items.get(todoItemView.getSelectionModel().getSelectedIndex();
-                                completeCheckbox.setSelected(selectedItem).getCompleteStatus());
-                                datePicker.setDate(selectedItem.getDate());
-                                itemTextField.set(selectedItem.getName());
+                            // Update the top bar fields to what the item's values are
+                            completeCheckbox.setSelected(selectedItem.getCompleteStatus());
+                            datePicker.setValue(selectedItem.getDate());
+                            itemTextField.setText(selectedItem.getName());
                         }
+                        if (event.getClickCount() == 2 && todoItemView.getSelectionModel().getSelectedIndex() != -1)
+                        {
+                            CreateDialogInputBox();
+                        }
+                    }
                 }
-        });*/
+            }
+        });
+    }
+
+    private void CreateDialogInputBox()
+    {
+        // initialize variables and get the selected item
+        Item selectedItem = items.get(todoItemView.getSelectionModel().getSelectedIndex());
+        TextInputDialog inputDialog = new TextInputDialog();
+        TextField input = inputDialog.getEditor();
+
+        // set up the inputDialog panel
+        inputDialog.setHeaderText("Edit the description of the item you selected.");
+        inputDialog.getDialogPane().getButtonTypes().remove(1); // remove cancel button
+        inputDialog.setTitle("Edit Description");
+
+        // show the dialog panel and save the users input
+        if (selectedItem.getDescription() != null)
+            input.setText(selectedItem.getDescription());
+        inputDialog.showAndWait();
+
+        // save the description to the selected item for later use
+        if (input.getText() != null)
+            selectedItem.setDescription(input.getText());
     }
 
     @FXML
     void onCompleteCheckbox(ActionEvent event) {
-        //items.get(todoItemView.getSelectionModel().getSelectedIndex()).setComplete(completeCheckbox.IsSelected());
+        // set the complete status to the item
+        items.get(todoItemView.getSelectionModel().getSelectedIndex()).setComplete(completeCheckbox.isSelected());
     }
 
     @FXML
     void onAllOptionSelected(ActionEvent event) {
-        // Use DisplayCompleteManager.ShowAll();
+        DisplayCompleteManager.ShowAllItems(items, todoItemView);
     }
 
     @FXML
     void onIncompleteOptionSelected(ActionEvent event) {
-        // Use DisplayCompleteManager.ShowIncompleteItems();
+        DisplayCompleteManager.ShowIncompleteItems(items, todoItemView);
     }
 
     @FXML
     void onCompleteOptionSelected(ActionEvent event) {
-        // Use DisplayCompleteManager.ShowCompletedItems();
+        DisplayCompleteManager.ShowCompletedItems(items, todoItemView);
     }
 
     @FXML
     void onDatePickerAction(ActionEvent event) {
-        //Item item = new Item();
-        //item.setDate(datePicker.getValue());
+        int index = todoItemView.getSelectionModel().getSelectedIndex();
+
+        // set the date format to "yyyy-mm-dd"
+        datePicker.setConverter(new StringConverter<>()
+        {
+            private final DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            @Override
+            public String toString(LocalDate localDate)
+            {
+                if (localDate == null)
+                    return "";
+                return dateTimeFormatter.format(localDate);
+            }
+
+            @Override
+            public LocalDate fromString(String dateString)
+            {
+                if (dateString == null || dateString.trim().isEmpty())
+                {
+                    return null;
+                }
+                return LocalDate.parse(dateString, dateTimeFormatter);
+            }
+        });
+        items.get(index).setDate(datePicker.getValue());
     }
 
     @FXML
     void onDeleteSelectedPressed(ActionEvent event) {
-        //int index = todoListView.getSelectionModel().getSelectedIndex();
-        //todoListView.getSelectionModel().getSelectedIndices().remove(index);
-        // delete item class
+        int index = todoItemView.getSelectionModel().getSelectedIndex();
+        todoItemView.getItems().remove(index);
+        items.remove(index);
     }
 
     @FXML
-    void onHomeButtonPressed(ActionEvent event) {
-        //ButtonHandler.HomeButton();
+    void onRemoveAllPressed(ActionEvent event) {
+        todoItemView.getItems().clear();
+        items.clear();
     }
 
     @FXML
-    void onLoadPressed(ActionEvent event) {
-        //ButtonHandler.Load(file);
+    void onLoadPressed(ActionEvent event) throws IOException {
+        // Create a FileChooser for the user to open a previous list
+        ButtonHandler bh = new ButtonHandler();
+        FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setTitle("Open List");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter(".txt", "*.txt")
+        );
+        File file = fileChooser.showOpenDialog(Stage.getWindows().get(0));
+        if (file != null)
+            items = bh.Load(file);
+
+        // when loaded, update the visual list
+        todoItemView.getItems().clear();
+        for (Item item : items)
+        {
+            todoItemView.getItems().add(item.getName());
+        }
     }
 
     @FXML
     void onRenameButtonPressed(ActionEvent event) {
-        //ButtonHandler.Rename(todoItemView.getSelectionModel().getSelectedItem(), todoItemView.getSelectionModel().getSelectedIndex(), items);
+        ButtonHandler.RenameItem(itemTextField.getCharacters().toString(), todoItemView.getSelectionModel().getSelectedIndex(), items, todoItemView);
     }
 
     @FXML
     void onSavePressed(ActionEvent event) {
-        //ButtonHandler.Save(todoItemView);
+        ButtonHandler bh = new ButtonHandler();
+        bh.Save(items);
     }
 
 }

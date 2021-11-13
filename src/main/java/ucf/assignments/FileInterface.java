@@ -5,9 +5,11 @@
 package ucf.assignments;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 public interface FileInterface {
-    void Save(List<String> list);
-    List<String> Load(File file);
+    void Save(List<Item> list);
+    List<Item> Load(File file) throws IOException;
 }

@@ -10,28 +10,25 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 public class ToDoApplication extends Application {
-    private ToDoList currentList;
+    private Stage primaryStage;
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ToDoApplication.class.getResource("ListView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ToDoApplication.class.getResource("ItemView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("To-do List Manager");
         stage.setScene(scene);
         stage.show();
+        primaryStage = stage;
+    }
+
+    public Stage GetPrimaryStage()
+    {
+        return primaryStage;
     }
 
     public static void main(String[] args) {
         launch();
-    }
-
-    public ToDoList getCurrentList() {
-        return currentList;
-    }
-
-    public void setCurrentList(ToDoList currentList) {
-        this.currentList = currentList;
     }
 }
