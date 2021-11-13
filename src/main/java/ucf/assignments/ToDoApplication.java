@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ToDoApplication extends Application {
-    private Stage primaryStage;
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ToDoApplication.class.getResource("ItemView.fxml"));
@@ -20,12 +19,6 @@ public class ToDoApplication extends Application {
         stage.setTitle("To-do List Manager");
         stage.setScene(scene);
         stage.show();
-        primaryStage = stage;
-    }
-
-    public Stage GetPrimaryStage()
-    {
-        return primaryStage;
     }
 
     public static void main(String[] args) {

@@ -1,20 +1,16 @@
 @startuml
 
 ItemViewController <|- Item
-ListViewController <|- ToDoList
 ToDoApplication <|-- ItemViewController
-ToDoApplication <|-- ListViewController
 
 ButtonHandler <|- FileInterface
-ButtonHandler <|-- ListViewController
-ButtonHandler <|- ItemViewController
-ListViewController <|-- ItemViewController
+ButtonHandler <|-- ItemViewController
 DisplayCompleteManager <|- ItemViewController
 
 interface FileInterface
 {
-    void Save(List<String> list);
-    List<String> Load(File file);
+    void Save(List<Item> list);
+    List<Item> Load(File file) throws IOException;
 }
 
 class ItemViewController {
@@ -45,14 +41,12 @@ class ItemViewController {
     void onLoadPressed(ActionEvent event)
     void onRenameButtonPressed(ActionEvent event)
     void onSavePressed(ActionEvent event)
+    private void CreateDialogInputBox()
 }
 
 class ToDoApplication
 {
-    private ToDoList currentList;
     public static void main(String[] args)
-    public ToDoList getCurrentList()
-    public void setCurrentList(ToDoList currentList)
     public void start(Stage stage) throws IOException
 }
 
@@ -62,6 +56,7 @@ class Item
     private LocalDate date;
     private boolean complete;
     public Item(String name)
+    public static Item GetItemByString(List<Item> items, String searchString)
     public String getName()
     public LocalDate getDate()
     public boolean getCompleteStatus()
@@ -70,54 +65,22 @@ class Item
     public void setComplete(boolean complete)
 }
 
-class ListViewController
-{
-    private Button addButton;
-    private MenuItem deleteItem;
-    private MenuButton fileButton;
-    private TextField listTextField;
-    private MenuItem loadMenuOption;
-    private Button renameButton;
-    private MenuItem saveAllMenuOption;
-    private ListView<String> todoListView;
-    private ButtonHandler bh;
-    private ToDoApplication app;
-    void onAddButtonPressed(ActionEvent event)
-    void onListCellClicked(MouseEvent event)
-    void onLoadPressed(ActionEvent event)
-    void onRenameButtonPressed(ActionEvent event)
-    void onSavePressed(ActionEvent event)
-    void onDelete(ActionEvent event)
-}
-
-class ToDoList
-{
-    private String listName;
-    private List<Item> listItems;
-    public String getListName()
-    public List<Item> getListItems()
-    public void setListName(String listName)
-    public void setListItems(List<Item> listItems)
-}
-
-
 class ButtonHandler
 {
     public void Save(List<String> list)
     public List<String> Load(File file)
     public Item AddItemButton(ListView<String> todoItemView, TextField listTextField)
-    public ToDoList AddListButton(ListView<String> todoListView, TextField listTextField)
     public void RenameItem(String currentName, int index, List<Item> items)
-    public String Rename(String newName)
-    public void HomeButton()
 }
 
 class DisplayCompleteManager
 {
-    public void ShowCompletedItems()
-    public void ShowIncompleteItems()
-    public void ShowAllItems()
-    private void HideAll(ListView<String> listView)
+    private static List<Item> completed;
+    private static List<Item> incomplete;
+    public void ShowCompletedItems(List<Item> masterList, ListView<String> listView)
+    public void ShowIncompleteItems(List<Item> masterList, ListView<String> listView)
+    public void ShowAllItems(List<Item> masterList, ListView<String> listView)
+    private void HideAll(List<Item> masterList, ListView<String> listView)
 }
 
 @enduml

@@ -88,9 +88,4 @@ public class ButtonHandler implements FileInterface {
         items.get(index).setName(newName);
         todoItemView.getItems().set(index, newName);
     }
-
-    public static String Rename(String newName)
-    {
-        return newName;
-    }
 }
