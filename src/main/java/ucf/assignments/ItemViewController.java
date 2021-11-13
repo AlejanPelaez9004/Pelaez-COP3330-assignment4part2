@@ -104,7 +104,7 @@ public class ItemViewController {
         TextField input = inputDialog.getEditor();
 
         // set up the inputDialog panel
-        inputDialog.setHeaderText("Edit the description of the item you selected.");
+        inputDialog.setHeaderText("Edit the description of the item you selected. (256 character limit)");
         inputDialog.getDialogPane().getButtonTypes().remove(1); // remove cancel button
         inputDialog.setTitle("Edit Description");
 
@@ -114,7 +114,7 @@ public class ItemViewController {
         inputDialog.showAndWait();
 
         // save the description to the selected item for later use
-        if (input.getText() != null)
+        if (input.getText() != null && input.getCharacters().length() <= 256)
             selectedItem.setDescription(input.getText());
     }
 
